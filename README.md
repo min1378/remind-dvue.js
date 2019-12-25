@@ -17,7 +17,7 @@
 - View는 ViewModel만 알고 있으면 된다.
 - 비즈니스 로직에서는 ViewModel의 상태 데이터만 변경하면 즉시 View에 반영된다.
 - MVVM 아키텍쳐
-- ![1-1](.\images\1-1.png)
+- ![1-1](./images/1-1.png)
 
 
 
