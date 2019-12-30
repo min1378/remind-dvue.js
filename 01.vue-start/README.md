@@ -42,7 +42,7 @@
 
 - Model을 변경하면 ViewModel 객체를 통해 HTML DOM이 즉시 변경된다.
 
-![v-model](../images/v-model.png)
+![MVVM 패턴](../images/MVVM 패턴.png)
 
 
 
