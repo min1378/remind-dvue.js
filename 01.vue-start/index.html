@@ -11,8 +11,8 @@
 
 <body>
 
-    <div id="simple">
-        <!-- v-model을 활용하여 양방향 데이터 바인딩을 하고 있다. -->
+    <!-- <div id="simple">
+        v-model을 활용하여 양방향 데이터 바인딩을 하고 있다.
         <input type="text" v-model.lazy="name" placeholder="이름을 입력하세요" />
         <br/>
         <p>입력된 이름 :
@@ -30,28 +30,53 @@
     <hr/>
     <div id="simple2">
         선택한 과일들 : <span v-html="fruits"></span>
+    </div> -->
+    <div id="account">
+        잔고 : <input type="text" v-model="balance" />
+        <br/> 회원님의 등급 :
+        <span v-if="balance >= 1000000">Gold</span>
+        <span v-else-if="balance >= 500000">Silver</span>
+        <span v-else-if="balance >= 200000">Bronze</span>
+        <span v-else>Basic</span>
     </div>
     <script type="text/javascript">
-        // 모델 객체이다. 데이터를 가지고 있다.
-        var model = {
-                fruits: []
-            }
-            // simple1 객체는 요소로 id가 simple1을 갖고 있으며 데이터는 model 객체와 연결되어 있는 View Model이다.
         var simple1 = new Vue({
-                el: '#simple1',
-                data: model
-            })
-            // simple2 객체는 요소로 id가 simple2을 갖고 있으며 데이터는 model 객체와 연결되어 있는 View Model이다.
-        var simple2 = new Vue({
-            el: '#simple2',
-            data: model
-        })
-        var twoway = new Vue({
-                el: '#simple',
+                el: '#account',
                 data: {
-                    name: ''
+                    balance: 0
                 }
             })
+            // <div id="account">
+            //     예금액 : <input type="text" v-model="amount" />
+            //     <img v-if="amount < 0" src="images/error.png" title="마이너스는 허용하지 않습니다." style="width: 15px; height: 15px; vertical-align: middle;" />
+            // </div>
+            // <script type="text/javascript">
+            //     var simple1 = new Vue({
+            //             el: '#account',
+            //             data: {
+            //                 amount: 0
+            //             }
+            //         })
+            // // 모델 객체이다. 데이터를 가지고 있다.
+            // var model = {
+            //         fruits: []
+            //     }
+            //     // simple1 객체는 요소로 id가 simple1을 갖고 있으며 데이터는 model 객체와 연결되어 있는 View Model이다.
+            // var simple1 = new Vue({
+            //         el: '#simple1',
+            //         data: model
+            //     })
+            //     // simple2 객체는 요소로 id가 simple2을 갖고 있으며 데이터는 model 객체와 연결되어 있는 View Model이다.
+            // var simple2 = new Vue({
+            //     el: '#simple2',
+            //     data: model
+            // })
+            // var twoway = new Vue({
+            //         el: '#simple',
+            //         data: {
+            //             name: ''
+            //         }
+            //     })
             // var model = {
             //     message: 'v-bind 디렉티브',
             //     imagePath: "http://sample.bmaster.kro.kr/photos/61.jpg"
