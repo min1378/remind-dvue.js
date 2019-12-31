@@ -426,18 +426,43 @@
    - v-pre는 HTML 요소에 대한 컴파일을 수행하지 않는다.
 
      ```HTML
-   <span v-pre>{{message}}</span>
-   # 출력 결과는 {{message}}
+     <span v-pre>{{message}}</span>
+     #출력 결과는 {{message}}
      ```
 
-   
 
 2. v-once
 
    - v-once는 처음 한 번만 렌더링을 수행한다. Vue 인스턴스의 데이터를 변경하더라도 다시 렌더링을 수행하지 않는다.  초기값이 변경되지 않는 UI를 만들때 유용하다.
+3. v-cloak
+   - 많은 데이터를 출력할 때 {{ }} 표현식이 화면에 일시적으로 나타나는 경우가 있다. Vue 인스턴스가 el 옵션의 템플릿을 컴파일 할때 발생하는 시간때문에 일어나는 현상이다. 복잡한 UI일수록 빈번하게 발생되는데 이를 방지 하기 위한 디렉티브 이다.
 
-     ```HTML
-     
-     ```
+### 계산형 속성
 
-     
+- Vue 객체를 만들 때 computed 속성과 함께 함수를 등록하면 속성처럼 사용할 수 있다.
+
+  ```HTML
+  <div id="example">
+          <input type="text" v-model="num" /><br/> 1부터 입력된 수까지의 합 : <span>{{sum}}</span>
+      </div>
+      <script type="text/javascript">
+          var vmSum = new Vue({
+              el: "#example",
+              data: {
+                  num: 0
+              },
+              // 계산형 속성(Computed Property)
+              computed: {
+                  sum: function() {
+                      // this는 Vue 객체 자신을 참조한다. HTML 요소 내부에서는 모두 문자열로 다루어지기 때문에 숫자로 변환.
+                      var n = Number(this.num)
+                      
+                      if (Number.isNaN(n) || n < 1) return 0;
+                      return ((1 + n) * n) / 2;
+                  }
+              }
+          })
+      </script>
+  ```
+
+  
