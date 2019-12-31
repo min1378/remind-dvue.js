@@ -39,12 +39,20 @@
                 </tr>
             </thead>
             <tbody id="contacts">
-                <tr v-for="contact in contacts">
-                    <td>{{contact.no}}</td>
-                    <td>{{contact.name}}</td>
-                    <td>{{contact.tel}}</td>
-                    <td>{{contact.address}}</td>
+                <!-- 2개의 tr 요소를 한 번에 반복 렌더링하기 위해 template로 묶음. template는 렌더링 내용에 포함 X -->
+                <template v-for="(contact, index) in contacts">
+                <tr>
+                  <td>{{contact.no}}</td>
+                  <td>{{contact.name}}</td>
+                  <td>{{contact.tel}}</td>
+                  <td>{{contact.address}}</td>
                 </tr>
+                <!-- index를 5로 나눈 나머지가 4일때 true를 리턴 => 줄 표시 -->
+                <tr class="divider" v-if="index % 5==4">
+                  <td colspan="4"></td>
+                </tr>
+                </template>
+
             </tbody>
         </table>
     </div>

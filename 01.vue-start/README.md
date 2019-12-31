@@ -367,5 +367,77 @@
 - 원본 데이터가 객체인 경우 키를 이용해 값에 접근하는 해쉬맵(HashMap) 구조이기 때문에, key, value 값을 얻어낼 수 있는 구조를 사용한다.
 
 ```HTML
-
+<div id="example">
+        <select id="regions">
+      <option disabled="disabled" selected>지역을 선택하세요.</option>
+      <option v-for="(val, key) in regions" v-bind:value="key">{{ val }} </option>
+      
+    </select>
+    </div>
+    <script type="text/javascript">
+        var regions = {
+            "A": "Asia",
+            "B": "America",
+            "C": "Europe",
+            "D": "Africa",
+            "E": "Oceania"
+        }
+        var list = new Vue({
+            el: "#example",
+            data: {
+                regions: regions
+            }
+        })
+    </script>
 ```
+
+- 인덱스 번호가 필요한 경우 *(contact, index) in contacts*  으로 바꾸면 인덱스 번호를 표현할 수 있다.
+- v-for 와 v-if는 같이 쓸 수 있는데, v-for가 먼저 적용되고 v-if가 수행된다.
+
+- Vue.js는 가상 DOM을 지원하는데 이 가상 DOM은 렌더링 속도를 빠르게 하기 위해 변경된 부분만 업데이트.
+- Vue.js의 가상 DOM은 v-for로 렌더링한 배열 데이터의 순서가 변경되면 DOM 요소(HTML DOM Element)를 이동시키지 않고 기존 DOM 요소의 데이터를 변경한다.
+- 만약 DOM 요소를 찾아 DOM 요소의 위치를 직접 변경하고 싶다면 DOM 요소에 Key 특성을 
+
+부여할 수 있다.
+
+- 배열 데이터가 변경될 때 추적되지 않는 작업이 있다. 배열 데이터를 인덱스 번호를 이용해 직접 변경하는 경우 화면에는 아무 변화가 없을 것이다.
+
+    ```HTML
+    list.contacts[0] = 
+    { no : 100, name : "다혜", tel: "010-1111-111", address : "제주"}
+    ```
+
+- 반면에 배열 값 내부의 속성을 직접 변경하는 경우는 화면이 즉시 변경된다.
+
+  ```HTML
+  list.contact[1].name = "다혜"
+  ```
+
+- 기존의 배열 값을 변경하기 위해서는 Vue.set 메서드를 사용해야 한다.
+  
+  ```HTML
+  Vue.set(list.contacts,0,{ no : 100, name : "다혜", tel: "010-1111-111", address : "제주"})
+  ```
+
+### 기타 디렉티브
+
+1. v-pre 
+
+   - v-pre는 HTML 요소에 대한 컴파일을 수행하지 않는다.
+
+     ```HTML
+   <span v-pre>{{message}}</span>
+   # 출력 결과는 {{message}}
+     ```
+
+   
+
+2. v-once
+
+   - v-once는 처음 한 번만 렌더링을 수행한다. Vue 인스턴스의 데이터를 변경하더라도 다시 렌더링을 수행하지 않는다.  초기값이 변경되지 않는 UI를 만들때 유용하다.
+
+     ```HTML
+     
+     ```
+
+     
