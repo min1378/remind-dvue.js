@@ -99,4 +99,4 @@ http://code.visualstudio.com 에서 다운로드.
 
 - Vue CLI 3.x 버전에서는 npm 대신 yarn 패키지 매니저를 사용한다.
 
-- yarn이 npm보다 실행속도가 빠르기 때문.
+- yarn이 npm보다 실행속도가 빠르기 때문..
