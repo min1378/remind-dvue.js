@@ -30,7 +30,9 @@
 <body>
     <div id="example">
         <p>
-            국가명 : <input type="text" placeholder="국가명" />
+            <!-- v-model 로 양방향 바인딩 -->
+            국가명 : <input type="text" v-model="countryname" placeholder="국가명" />
+
         </p>
         <table id="list">
             <thead>
@@ -42,7 +44,13 @@
                 </tr>
             </thead>
             <tbody id="contacts">
-
+                <!-- v-for로 filtered 배열 데이터 표현 -->
+                <tr v-for="c in filtered">
+                    <td>{{c.no}}</td>
+                    <td>{{c.name}}</td>
+                    <td>{{c.capital}}</td>
+                    <td>{{c.region}}</td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -138,6 +146,7 @@
                 filtered: function() {
                     var cname = this.countryname.trim();
                     return this.countries.filter(function(item, index) {
+                        // indexOf 메서드를 이용해 문자열을 포함하고 있는 경우 true 리턴
                         if (item.name.indexOf(cname) > -1) {
                             return true;
                         }

@@ -452,7 +452,6 @@
                   sum: function() {
                       // this는 Vue 객체 자신을 참조한다. HTML 요소 내부에서는 모두 문자열로 다루어지기 때문에 숫자로 변환.
                       var n = Number(this.num)
-                      
                       if (Number.isNaN(n) || n < 1) return 0;
                       return ((1 + n) * n) / 2;
                   }
@@ -460,5 +459,6 @@
           })
       </script>
   ```
-
   
+
+
