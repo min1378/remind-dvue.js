@@ -31,8 +31,10 @@
     <div id="example">
         <p>
             <!-- v-model 로 양방향 바인딩 -->
-            국가명 : <input type="text" v-model="countryname" placeholder="국가명" />
-
+            <!-- 국가명 : <input type="text" v-model="countryname" placeholder="국가명" /> -->
+            <!-- v-model은 키의 입력이 있어야 이벤트 발생.. 그래서 자연스럽지 않다. -->
+            <!-- v-on을 활용 -->
+            국가명 : <input type="text" :value="countryname" placeholder="국가명" @input="nameChanged" />
         </p>
         <table id="list">
             <thead>
@@ -151,6 +153,11 @@
                             return true;
                         }
                     });
+                }
+            },
+            methods: {
+                nameChanged: function(e) {
+                    this.countryname = e.target.value;
                 }
             }
         });
